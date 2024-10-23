@@ -16,7 +16,8 @@ int main_menu();
 int main() {
     srand(time(0));
     bool again;
-    int choice;
+    int choice = 0;
+    list<Goat> trip;
 
     // read & populate arrays for names and colors
     ifstream fin("names.txt");
@@ -30,7 +31,24 @@ int main() {
     while (fin1 >> colors[i++]);
     fin1.close();
 
-    choice = main_menu();
+    while (choice != 4)
+    {
+        choice = main_menu();
+        switch (choice)
+        {
+        case 1:
+            add_goat(trip, names, colors);
+            break;
+        case 2:
+            delete_goat(trip);
+            break;
+        case 3:
+            display_trip(trip);
+            break;
+        default:
+            break;
+        }
+    }
 
 
     return 0;
@@ -51,4 +69,9 @@ int main_menu()
         cin >> choice;
     } while (choice > 4 || choice < 1);
     return choice;
+}
+
+void add_goat(list<Goat> &trip, string names[], string colors[])
+{
+    
 }
