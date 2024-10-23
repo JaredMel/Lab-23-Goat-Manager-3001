@@ -73,5 +73,15 @@ int main_menu()
 
 void add_goat(list<Goat> &trip, string names[], string colors[])
 {
+    int randName = rand() % SZ_COLORS+1;
+    int randColor = rand() % SZ_COLORS+1;
+    int randAge = rand() % MAX_AGE;
+
+    trip.push_back(Goat(names[randName], randAge, colors[randColor]));
+}
+
+void delete_goat(list<Goat> &trip)
+{
+    
     
 }
