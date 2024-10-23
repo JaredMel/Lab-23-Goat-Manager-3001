@@ -82,6 +82,17 @@ void add_goat(list<Goat> &trip, string names[], string colors[])
 
 void delete_goat(list<Goat> &trip)
 {
-    
+    int count = 1;
+    int goatIndex;
+
+    cout << "Select the goat you wish to delete from the list:" << endl;
+    for (Goat theGoat : trip)
+    {
+        cout << "[" << count << "] " << theGoat.get_name() << " (" << theGoat.get_age() << ", " << theGoat.get_color() << ")" << endl;
+        count++;
+    }
+    cout << "Choice -->";
+    cin >> goatIndex;
+
     
 }
