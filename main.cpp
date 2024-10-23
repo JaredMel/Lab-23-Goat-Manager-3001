@@ -16,6 +16,7 @@ int main_menu();
 int main() {
     srand(time(0));
     bool again;
+    int choice;
 
     // read & populate arrays for names and colors
     ifstream fin("names.txt");
@@ -29,9 +30,25 @@ int main() {
     while (fin1 >> colors[i++]);
     fin1.close();
 
-
+    choice = main_menu();
 
 
     return 0;
 }
 
+int main_menu()
+{
+    int choice;
+
+    do
+    {
+        cout << "*** GOAT MANAGER 3001 ***" << endl;
+        cout << "[1] Add a goat" << endl;
+        cout << "[2] Delete a goat" << endl;
+        cout << "[3] List goats" << endl;
+        cout << "[4] Quit" << endl;
+        cout << "Choice -->";
+        cin >> choice;
+    } while (choice > 4 || choice < 1);
+    return choice;
+}
