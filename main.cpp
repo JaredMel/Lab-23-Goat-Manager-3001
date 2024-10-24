@@ -12,7 +12,7 @@ void delete_goat(list<Goat> &trip);
 void add_goat(list<Goat> &trip, string [], string []);
 void display_trip(list<Goat> trip);
 int main_menu();
-
+//the main function
 int main() {
     srand(time(0));
     bool again;
@@ -30,62 +30,72 @@ int main() {
     i = 0;
     while (fin1 >> colors[i++]);
     fin1.close();
-
+    //A while loop that goes in till choice == 4
     while (choice != 4)
     {
+        //Sets choice to the return value of the main_menu() function
         choice = main_menu();
+        //switch case for each option
         switch (choice)
         {
         case 1:
+            //calls the add_goat() function
             add_goat(trip, names, colors);
             break;
         case 2:
+            //calls the delete_goat() function
             delete_goat(trip);
             break;
         case 3:
+            //calls the display_trip() function
             display_trip(trip);
             break;
         default:
             break;
         }
     }
-
-
     return 0;
 }
-
+//the main_menu function
 int main_menu()
 {
+    //Declares and initilizes variables
     int choice;
-
+    //do while loop in till choice is a number between 1 and 4
     do
     {
+        //Print Menu
         cout << "*** GOAT MANAGER 3001 ***" << endl;
         cout << "[1] Add a goat" << endl;
         cout << "[2] Delete a goat" << endl;
         cout << "[3] List goats" << endl;
         cout << "[4] Quit" << endl;
         cout << "Choice -->";
+        //user input
         cin >> choice;
     } while (choice > 4 || choice < 1);
+    //returns choice
     return choice;
 }
-
+//the add_goat function
 void add_goat(list<Goat> &trip, string names[], string colors[])
 {
+    //Declares and initilizes variables
     int randName = rand() % SZ_COLORS+1;
     int randColor = rand() % SZ_COLORS+1;
     int randAge = rand() % MAX_AGE;
-
+    //pushs the new goat to the end of the list
     trip.push_back(Goat(names[randName], randAge, colors[randColor]));
+    cout << endl;
 }
-
+//the delete_goat function
 void delete_goat(list<Goat> &trip)
 {
+    //Declares and initilizes variables
     int count = 1;
     int goatIndex;
     list<Goat>::iterator it = trip.begin();
-
+    //
     cout << "Select the goat you wish to delete from the list:" << endl;
     for (Goat theGoat : trip)
     {
@@ -99,7 +109,7 @@ void delete_goat(list<Goat> &trip)
     {
         cout << "List is empty unable to delete goat" << endl;
     }
-    else if (goatIndex > count-1 || goatIndex < 1)
+    else if (goatIndex > count || goatIndex < 1)
     {
         cout << "Choice was not in the List unable to delete goat" << endl;
     }
@@ -107,8 +117,9 @@ void delete_goat(list<Goat> &trip)
     {
         advance(it, goatIndex);
         trip.erase(it);
-        cout << "Successfully deleted goat";
+        cout << "Successfully deleted goat" << endl;
     }
+    cout << endl;
 }
 
 void display_trip(list<Goat> trip)
@@ -118,4 +129,5 @@ void display_trip(list<Goat> trip)
     {
         cout << "   " << theGoat.get_name() << " (" << theGoat.get_age() << ", " << theGoat.get_color() << ")" << endl;
     }
+    cout << endl;
 }
