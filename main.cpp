@@ -95,16 +95,17 @@ void delete_goat(list<Goat> &trip)
     int count = 1;
     int goatIndex;
     list<Goat>::iterator it = trip.begin();
-    //
+    //Prints list with count for each goat
     cout << "Select the goat you wish to delete from the list:" << endl;
     for (Goat theGoat : trip)
     {
         cout << "[" << count << "] " << theGoat.get_name() << " (" << theGoat.get_age() << ", " << theGoat.get_color() << ")" << endl;
         count++;
     }
+    //user input
     cout << "Choice -->";
     cin >> goatIndex;
-
+    //checks if list is empty or if user's choice was actually in the list
     if (trip.empty())
     {
         cout << "List is empty unable to delete goat" << endl;
@@ -115,15 +116,18 @@ void delete_goat(list<Goat> &trip)
     }
     else
     {
+        //advances it to goatIndex
         advance(it, goatIndex);
+        //erases goat
         trip.erase(it);
         cout << "Successfully deleted goat" << endl;
     }
     cout << endl;
 }
-
+//the display_trip function
 void display_trip(list<Goat> trip)
 {
+    //Prints list
     cout << "Printing List:" << endl;
     for (Goat theGoat : trip)
     {
